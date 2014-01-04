@@ -432,7 +432,7 @@ namespace SimpleJson
 
         public static implicit operator long(JsonNode node)
         {
-            if (node.ValueType == ValueType.Long)
+            if (node.ValueType == ValueType.Long || node.ValueType == ValueType.Int)
             {
                 long result = long.Parse(node.StringValue);
                 return result;

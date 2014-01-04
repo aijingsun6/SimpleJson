@@ -1,0 +1,7 @@
+D:\develop\C#\SimpleJson\SimpleJson\bin\Debug\SimpleJson.dll
+D:\develop\C#\SimpleJson\SimpleJson\bin\Debug\SimpleJson.pdb
+D:\develop\C#\SimpleJson\SimpleJson\bin\Debug\nunit.framework.dll
+D:\develop\C#\SimpleJson\SimpleJson\bin\Debug\nunit.framework.xml
+D:\develop\C#\SimpleJson\SimpleJson\obj\Debug\SimpleJson.csprojResolveAssemblyReference.cache
+D:\develop\C#\SimpleJson\SimpleJson\obj\Debug\SimpleJson.dll
+D:\develop\C#\SimpleJson\SimpleJson\obj\Debug\SimpleJson.pdb

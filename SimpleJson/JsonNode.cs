@@ -855,22 +855,9 @@ namespace SimpleJson
 
             bool isString = json[offset].Equals('"');
 
-            bool isNumber = false;
-
             if (isString)
             {
                 offset++;
-            }
-            else
-            {
-                char c = NextUnBlankControlChar(json,ref offset);
-
-                if (Char.IsNumber(c) 
-                    || 
-                    ((c.Equals('+') || c.Equals('-'))  && Char.IsNumber(json[offset + 1])))
-                {
-                    isNumber = true;
-                }
             }
 
             
@@ -886,23 +873,13 @@ namespace SimpleJson
                         break;
                     }
                 }
-
-                if (isNumber)
+                else
                 {
-                    //
-                    if (Char.IsNumber(json[offset]) && 
-                        
-                        !(json[offset + 1].Equals('.') || Char.IsNumber(json[offset + 1])))
+                    if (json[offset + 1].Equals(',') || json[offset + 1].Equals('}') || json[offset + 1].Equals(']'))
                     {
                         break;
                     }
                 }
-
-                if (json[offset + 1].Equals(',') || json[offset + 1].Equals('}') || json[offset + 1].Equals(']'))
-                {
-                    break;
-                }
-                
                 offset++;
             }
             if (isString)
@@ -914,14 +891,8 @@ namespace SimpleJson
 
                 }
             }
-            if (isNumber)
-            {
-                if (!Char.IsNumber(json[offset]))
-                {
-                    int error = offset;
-                    throw new SimpleJsonException(string.Format("json:{0},offset:{1} which char is \'{2}\', but should be a number char", json, error, json[error]));
-                }
-            }
+           
+
             if (offset < json.Length -1)
             {
                 int cur = offset;

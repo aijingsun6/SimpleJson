@@ -177,8 +177,18 @@ namespace SimpleJson.Test
         }
 
 
+        [Test]
+        public void TestCode()
+        {
+            string json = "{\"authType\":1,\"code\":\"code\"}";
 
+            JsonNode root = JsonNode.FromJson(json);
 
+            Assert.AreEqual(1,root["authType"].Value);
+
+            Assert.AreEqual("code",root["code"].Value);
+
+        }
 
 
 

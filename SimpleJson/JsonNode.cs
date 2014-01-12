@@ -971,30 +971,6 @@ namespace SimpleJson
         }
         #endregion
 
-        public override bool Equals(object o)
-        {
-
-            if (o == null)
-            {
-                return false;
-            }
-            
-            if (o is JsonNode)
-            {
-                JsonNode node = o as JsonNode;
-                
-                bool result = NodeType == node.NodeType && ValueType == node.ValueType && Value.Equals(node.Value);
-
-                return result;
-
-            }
-            else
-            {
-                return false;
-            }
-
-        }
-
         public override string ToString()
         {
             if (NodeType == NodeType.Value)

@@ -11,3 +11,9 @@ C:\Users\Alking\Documents\GitHub\SimpleJson\SimpleJson\bin\Debug\SimpleJson.dll
 C:\Users\Alking\Documents\GitHub\SimpleJson\SimpleJson\bin\Debug\SimpleJson.pdb
 C:\Users\Alking\Documents\GitHub\SimpleJson\SimpleJson\bin\Debug\nunit.framework.xml
 C:\Users\Alking\Documents\GitHub\SimpleJson\SimpleJson\obj\Debug\SimpleJson.pdb
+D:\Project\github\SimpleJson\SimpleJson\bin\Debug\SimpleJson.dll
+D:\Project\github\SimpleJson\SimpleJson\bin\Debug\SimpleJson.pdb
+D:\Project\github\SimpleJson\SimpleJson\bin\Debug\nunit.framework.xml
+D:\Project\github\SimpleJson\SimpleJson\obj\Debug\SimpleJson.csprojResolveAssemblyReference.cache
+D:\Project\github\SimpleJson\SimpleJson\obj\Debug\SimpleJson.dll
+D:\Project\github\SimpleJson\SimpleJson\obj\Debug\SimpleJson.pdb

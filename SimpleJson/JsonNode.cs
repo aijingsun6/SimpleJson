@@ -24,12 +24,6 @@ namespace SimpleJson
     #region SimpleJsonException
     public class SimpleJsonException : Exception
     {
-        public SimpleJsonException()
-            : base()
-        {
-
-        }
-
         public SimpleJsonException(string message)
             : base(message)
         {
@@ -423,7 +417,7 @@ namespace SimpleJson
         }
         public static implicit operator JsonNode(int value)
         {
-            JsonNode node = new JsonNode(value);
+            var node = new JsonNode(value);
 
             return node;
         }
@@ -465,7 +459,7 @@ namespace SimpleJson
         {
             if (node.ValueType == ValueType.String)
             {
-                string result = node.StringValue as string;
+                var result = node.StringValue;
 
                 return result;
             }
@@ -683,7 +677,8 @@ namespace SimpleJson
                 }
                 return node;
             }
-            else if (json.StartsWith("[") && json.EndsWith("]"))
+
+            if (json.StartsWith("[") && json.EndsWith("]"))
             {
                 node = ParseArray(json, ref offset);
                 if (offset < json.Length - 1)
@@ -718,7 +713,7 @@ namespace SimpleJson
                 {
                     continue;
                 }
-                else if(c.Equals('}'))
+                if(c.Equals('}'))
                 {
                     break;
                 }
@@ -739,11 +734,11 @@ namespace SimpleJson
                 //找到第一个非空白和控制字符,这是后应该是值的开头
                 c =  NextUnBlankControlChar(json,ref offset);
                 JsonNode node;
-                if (json[offset].Equals('{'))
+                if (c.Equals('{'))
                 {
                      node = ParseObject(json, ref offset);
                 }
-                else if(json[offset].Equals('['))
+                else if(c.Equals('['))
                 {
                     node = ParseArray(json, ref offset);
                     
@@ -783,7 +778,7 @@ namespace SimpleJson
         {
             JsonNode result = new JsonNode(NodeType.Array);
             int originOffset = offset;
-            char c ;
+            char c;
             while (true)
             {
 
@@ -1000,7 +995,7 @@ namespace SimpleJson
                
             }
 
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             if (NodeType == NodeType.Object)
             {
                 sb.Append("{");

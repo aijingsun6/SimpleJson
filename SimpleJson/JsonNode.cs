@@ -393,6 +393,11 @@ namespace SimpleJson
         #region implicit
         public static implicit operator bool(JsonNode node)
         {
+            if (node == null)
+            {
+                throw new SimpleJsonException("node can not be null");
+            }
+
             if (node.ValueType == ValueType.Boolean)
             {
                 bool result = bool.Parse(node.StringValue);
@@ -408,6 +413,10 @@ namespace SimpleJson
 
         public static implicit operator int(JsonNode node)
         {
+            if (node == null)
+            {
+                throw new SimpleJsonException("node can not be null");
+            }
             if (node.ValueType == ValueType.Int)
             {
                 int result = int.Parse(node.StringValue);
@@ -426,6 +435,10 @@ namespace SimpleJson
 
         public static implicit operator long(JsonNode node)
         {
+            if (node == null)
+            {
+                throw new SimpleJsonException("node can not be null");
+            }
             if (node.ValueType == ValueType.Long || node.ValueType == ValueType.Int)
             {
                 long result = long.Parse(node.StringValue);
@@ -442,6 +455,10 @@ namespace SimpleJson
 
         public static implicit operator double(JsonNode node)
         {
+            if (node == null)
+            {
+                throw new SimpleJsonException("node can not be null");
+            }
             if (node.ValueType == ValueType.Double)
             {
                 double result = double.Parse(node.StringValue);
@@ -457,6 +474,10 @@ namespace SimpleJson
 
         public static implicit operator string(JsonNode node)
         {
+            if (node == null)
+            {
+                throw new SimpleJsonException("node can not be null");
+            }
             if (node.ValueType == ValueType.String)
             {
                 var result = node.StringValue;

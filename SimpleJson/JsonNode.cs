@@ -568,12 +568,12 @@ namespace SimpleJson
         {
         }
 
-        public JsonNode(string value) : this(value, false,null,0)
+        public JsonNode(string value) : this(value,NodeType.Value, ValueType.String)
         {
             
         }
 
-        private JsonNode(string value,bool inner,string json,int offset) :this()
+        private JsonNode(string value,string json,int offset) :this()
         {
             if (string.IsNullOrEmpty(value))
             {
@@ -640,32 +640,22 @@ namespace SimpleJson
                 NodeType = NodeType.Value;
                 ValueType = ValueType.String;
                 string content;
-                
 
-                if (inner)
+                if (value.StartsWith("\"") && value.EndsWith("\""))
                 {
-                    if (value.StartsWith("\"") && value.EndsWith("\""))
-                    {
-                        content = value.Substring(1, value.Length - 2);
-                    }
-                    else if(value.Equals("null"))
-                    {
-                        content = null;
-                        ValueType = ValueType.Null;
-                    }
-                    else
-                    {
-                        int error = offset;
-                        throw new SimpleJsonException(string.Format("value {3} is invalid ,json:{0},offset :{1},char begin is \'{2}\',which should be \'\"\'(string value start)",json,error,json[error],value));
-                    }
-                    
+                    content = value.Substring(1, value.Length - 2);
+                }
+                else if (value.Equals("null"))
+                {
+                    content = null;
+                    ValueType = ValueType.Null;
                 }
                 else
                 {
-                    content = value;
+                    int error = offset;
+                    throw new SimpleJsonException(string.Format("value {3} is invalid ,json:{0},offset :{1},char begin is \'{2}\',which should be \'\"\'(string value start)", json, error, json[error], value));
                 }
-               
-               
+                                   
                 StringValue = content;
                 Value = content;
               
@@ -924,7 +914,7 @@ namespace SimpleJson
                     throw new SimpleJsonException(string.Format("json:{0},offset:{1}, value string next unblank char is \'{2}\',but should be \",\" ,obj end or \']\'(array end)", json, originOffset, nextChar));
                 }
             }
-            return new JsonNode(json.Substring(originOffset,offset - originOffset +1),true,json,originOffset);
+            return new JsonNode(json.Substring(originOffset,offset - originOffset +1),json,originOffset);
 
         }
 

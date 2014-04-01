@@ -43,6 +43,7 @@
     <Compile Include="Test\TestError.cs" />
     <Compile Include="Test\TestJsonNode.cs" />
     <Compile Include="Test\TestToString.cs" />
+    <Compile Include="Test\TestTrade.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

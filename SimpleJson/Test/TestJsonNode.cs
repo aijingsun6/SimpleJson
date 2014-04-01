@@ -35,11 +35,6 @@ namespace SimpleJson.Test
             string stringValue = subNode;
             Assert.AreEqual("hello, world.", stringValue);
 
-
-
-
-
-
         }
 
         [Test]
